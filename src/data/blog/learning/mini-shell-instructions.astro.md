@@ -4,6 +4,7 @@ description: "Comprehensive step-by-step instructions to create a Mini-Shell wit
 pubDate: "2025-06-23"
 pubDatetime: 2025-06-23T16:31:58.164762
 draft: false
+tags: ["rust", "systems programming", "shell", "unix", "tutorial"]
 ---
 
 ## Objective
