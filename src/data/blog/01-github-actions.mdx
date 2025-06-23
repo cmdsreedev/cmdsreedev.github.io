@@ -3,6 +3,7 @@ title: "Running and Testing GitHub Actions Locally and in CI"
 description: "Answers to common questions about running and testing github actions locally and in ci"
 pubDate: 2025-06-23
 author: "Sreevisakh"
+draft: false
 ---
 
 ## Running and Testing GitHub Actions Locally and in CI
@@ -12,6 +13,7 @@ author: "Sreevisakh"
 You can run GitHub Actions locally using the `act` tool. This helps test workflows before pushing to GitHub.
 
 **Steps:**
+
 1. Install act:
    ```bash
    brew install act
@@ -27,6 +29,7 @@ You can run GitHub Actions locally using the `act` tool. This helps test workflo
    ```
 
 **Tips:**
+
 - Docker is required.
 - Use `--platform` if needed.
 
@@ -37,10 +40,11 @@ Bun can be used as the runtime in your GitHub Actions workflow by configuring th
 ```yaml
 - uses: oven-sh/setup-bun@v1
   with:
-    bun-version: 'latest'
+    bun-version: "latest"
 ```
 
 **Tips:**
+
 - Replace `node` scripts with `bun` commands for compatibility.
 
 ### Question: Whats the best way to run e2e test of a webapp in github actions
@@ -48,12 +52,14 @@ Bun can be used as the runtime in your GitHub Actions workflow by configuring th
 Use a headless browser like Chrome and a test runner like Puppeteer or Playwright.
 
 **Sample GitHub Action step:**
+
 ```yaml
 - name: Run e2e tests
   run: bun test:e2e
 ```
 
 **Tips:**
+
 - Install dependencies before testing.
 - Ensure the server is running or mocked.
 
@@ -62,18 +68,21 @@ Use a headless browser like Chrome and a test runner like Puppeteer or Playwrigh
 To run Puppeteer tests:
 
 1. Install Puppeteer:
+
    ```bash
    bun add puppeteer
    ```
 
 2. Create a test:
+
    ```js
    const browser = await puppeteer.launch();
    const page = await browser.newPage();
-   await page.goto('http://localhost:3000');
+   await page.goto("http://localhost:3000");
    ```
 
 3. Run in CI with `xvfb` or headless mode.
 
 **Tips:**
+
 - Set `PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true` to speed up CI builds.

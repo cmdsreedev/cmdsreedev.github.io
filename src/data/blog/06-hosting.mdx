@@ -3,6 +3,7 @@ title: "Hosting a Static Website on GitHub Pages"
 description: "Answers to common questions about hosting a static website on github pages"
 pubDate: 2025-06-23
 author: "Sreevisakh"
+draft: false
 ---
 
 ## Hosting a Static Website on GitHub Pages
@@ -13,4 +14,57 @@ author: "Sreevisakh"
 2. In Settings → Pages → Source: set to `/ (root)` or `main`.
 
 **Tips:**
+
 - Your index.html must be in root of the repo or `docs/` folder.
+
+---
+
+### Question: How to configure a custom domain (CNAME) for GitHub Pages
+
+1. In your GitHub repo, create a file named `CNAME` in the root (or in the `public/` folder if using Astro).
+2. Add your custom domain (e.g., `yourdomain.com`) as the only line in the `CNAME` file.
+3. Push this file to your repository.
+4. In GitHub, go to **Settings → Pages** and set your custom domain.
+5. Update your DNS provider to point your domain to GitHub Pages (usually with an `A` or `CNAME` record).
+
+---
+
+### Question: How to deploy with GitHub Actions (and why use it)
+
+- Use the [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) GitHub Action to automate deployment.
+- This action builds your site and pushes the output to the `gh-pages` branch automatically on every push.
+- **Advantages:**
+  - No manual deployment steps.
+  - Ensures your site is always up-to-date with your code.
+  - Supports custom domains and advanced workflows.
+
+---
+
+### Question: Astro vs Hugo for static sites
+
+- **Astro:**
+  - Modern, component-based, supports multiple frameworks (React, Vue, Svelte, etc.).
+  - Ships zero JavaScript by default for fast performance.
+  - Great for blogs, documentation, and marketing sites.
+- **Hugo:**
+  - Go-based, extremely fast builds, uses Markdown and Go templates.
+  - Large theme ecosystem, great for content-heavy sites.
+- **Why choose Astro?**
+  - If you want to use modern JS/TS, component-based UI, and minimal client JS, Astro is a great choice.
+  - Hugo is best for pure Markdown content and ultra-fast builds.
+
+---
+
+### Question: How to set up an Astro project for GitHub Pages
+
+1. Install Astro:
+   ```sh
+   npm create astro@latest
+   # or
+   pnpm create astro@latest
+   ```
+2. Choose a template and follow the prompts.
+3. In `astro.config.ts`, set the `base` option if your site is not at the root (e.g., `/your-repo-name/`).
+4. Add a `CNAME` file in `public/` if using a custom domain.
+5. Add a GitHub Actions workflow (see above) to automate deployment.
+6. Push your code to GitHub and verify your site at your custom domain or GitHub Pages URL.

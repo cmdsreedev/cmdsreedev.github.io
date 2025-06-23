@@ -3,6 +3,7 @@ title: "Running Vite Preview and Using Bun for Background Processes"
 description: "Answers to common questions about running vite preview and using bun for background processes"
 pubDate: 2025-06-23
 author: "Sreevisakh"
+draft: false
 ---
 
 ## Running Vite Preview and Using Bun for Background Processes
@@ -22,6 +23,7 @@ bunx vite preview & sleep 1 && exit 0
 ```
 
 **Tips:**
+
 - Redirect logs to a file if needed.
 
 ### Question: How to do this with bun spawn
@@ -30,8 +32,13 @@ Using Bun’s `spawn`:
 
 ```ts
 const { spawn } = require("bun");
-spawn(["vite", "preview"], { stdout: "inherit", stderr: "inherit", detached: true });
+spawn(["vite", "preview"], {
+  stdout: "inherit",
+  stderr: "inherit",
+  detached: true,
+});
 ```
 
 **Tips:**
+
 - Use `detached: true` and `stdio: "ignore"` to fully background.
