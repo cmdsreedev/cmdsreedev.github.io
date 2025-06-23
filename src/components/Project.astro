@@ -1,0 +1,71 @@
+---
+import { getProjectPath } from "@/utils/getPath";
+import { slugifyStr } from "@/utils/slugify";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props extends CollectionEntry<"projects"> {
+  variant?: "h2" | "h3";
+}
+
+const { variant = "h2", data, id, filePath } = Astro.props;
+
+const { title, description, repo, tags, url } = data;
+
+const headerProps = {
+  style: { viewTransitionName: slugifyStr(title) },
+  class: "text-lg font-medium decoration-dashed hover:underline",
+};
+---
+
+<li class="my-6 list-none">
+  <a
+    href={getProjectPath(id, filePath)}
+    class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+  >
+    {
+      variant === "h2" ? (
+        <h2 {...headerProps}>{title}</h2>
+      ) : (
+        <h3 {...headerProps}>{title}</h3>
+      )
+    }
+  </a>
+  <p>{description}</p>
+  {
+    repo && (
+      <a
+        target="_blank"
+        href={repo}
+        class="inline-block text-sm text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+      >
+        Source
+      </a>
+    )
+  }
+  <p>
+    {
+      url && (
+        <a
+          target="_blank"
+          href={url}
+          class="inline-block text-sm text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+        >
+          Website
+        </a>
+      )
+    }
+  </p>
+  <div class="mt-2 flex flex-wrap gap-2">
+    {
+      tags?.map(tag => (
+        <a
+          href={`/tags/${slugifyStr(tag)}`}
+          class="inline-block rounded bg-accent/10 px-2 py-1 text-sm text-accent hover:bg-accent/20 focus-visible:bg-accent/20"
+          style={{ viewTransitionName: slugifyStr(tag) }}
+        >
+          {tag}
+        </a>
+      ))
+    }
+  </div>
+</li>
