@@ -3,35 +3,23 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+Hi, I'm **Sreevisakh** — a passionate Front End Engineer who loves building beautiful, accessible, and performant web experiences.
 
-![Astro Paper](public/astropaper-og.jpg)
+This blog is my personal space to document everything I'm working on, learning, and exploring in the world of web development. Here, you'll find articles, guides, and notes about my journey as a developer, including the challenges I face, the solutions I discover, and the tools I use.
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+You can also check out my projects and open source contributions on my [cmdsreedev GitHub repository](https://github.com/cmdsreedev).
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+## What you'll find here
 
-## Features
+- Deep dives into front-end technologies and frameworks
+- Tips and tricks for modern JavaScript and TypeScript
+- UI/UX best practices and accessibility insights
+- Project showcases and case studies
+- Notes on productivity, learning, and developer life
+- Honest documentation of my experiments, failures, and successes
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+## More about me
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+I enjoy collaborating with other developers, contributing to open source, and staying up-to-date with the latest trends in web tech. When I'm not coding, I like reading, exploring new tools, and sharing knowledge with the community.
 
-and so much more.
-
-## Show your support
-
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
-
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
-
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
-
-Kyay zuu! 🙏🏼
+Thanks for visiting my blog! If you have feedback or want to connect, feel free to reach out or check out my work on GitHub.
