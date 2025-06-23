@@ -2,6 +2,7 @@
 title: "Running and Testing GitHub Actions Locally and in CI"
 description: "Answers to common questions about running and testing github actions locally and in ci"
 pubDate: 2025-06-23
+pubDatetime: 2025-06-23T00:00:00.000Z
 author: "Sreevisakh"
 draft: false
 ---

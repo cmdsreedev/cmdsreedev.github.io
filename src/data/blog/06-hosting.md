@@ -2,6 +2,7 @@
 title: "Hosting a Static Website on GitHub Pages"
 description: "Answers to common questions about hosting a static website on github pages"
 pubDate: 2025-06-23
+pubDatetime: 2025-06-23T00:00:00.000Z
 author: "Sreevisakh"
 draft: false
 ---

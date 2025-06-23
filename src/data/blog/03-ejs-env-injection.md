@@ -2,6 +2,7 @@
 title: "Injecting Environment Variables in HTML Using EJS"
 description: "Answers to common questions about injecting environment variables in html using ejs"
 pubDate: 2025-06-23
+pubDatetime: 2025-06-23T00:00:00.000Z
 author: "Sreevisakh"
 draft: false
 ---

@@ -2,6 +2,7 @@
 title: "Running Vite Preview and Using Bun for Background Processes"
 description: "Answers to common questions about running vite preview and using bun for background processes"
 pubDate: 2025-06-23
+pubDatetime: 2025-06-23T00:00:00.000Z
 author: "Sreevisakh"
 draft: false
 ---
