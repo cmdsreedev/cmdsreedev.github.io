@@ -1,0 +1,1 @@
+publish_dir: ./dist # This is fine if Astro project is root
