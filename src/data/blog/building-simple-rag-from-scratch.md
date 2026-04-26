@@ -7,17 +7,17 @@ draft: false
 tags: ["machine learning", "rag", "llm", "embeddings", "retrieval"]
 ---
 
-When people talk about Retrieval-Augmented Generation (RAG), it often feels like a black box.
+When people talk about Retrieval-Augmented Generation (RAG), it can feel like a black box.
 
-You hear terms like embeddings, vector databases, semantic search, reranking, and chunking, and suddenly a simple idea starts sounding intimidating.
+You hear terms like embeddings, vector databases, semantic search, reranking, and chunking, and a simple idea suddenly sounds intimidating.
 
-But RAG is not magic. It is a very practical pattern:
+But RAG is not magic. It is a practical pattern:
 
 1. Turn your knowledge into a searchable form.
 2. Find the most relevant pieces for a question.
 3. Give those pieces to the model so it answers with context instead of guessing.
 
-In this post, we will build a tiny RAG pipeline from scratch with plain TypeScript and no external libraries. The goal is not to build a production system. The goal is to make every step understandable.
+In this post, we will build a tiny RAG pipeline from scratch using plain TypeScript and no external libraries. The goal is not to build a production system. The goal is to make each step easy to understand.
 
 By the end, you will have a working retrieval loop and a clear mental model for how modern RAG systems work.
 
@@ -29,7 +29,7 @@ Let’s say you ask:
 
 > What does React use?
 
-A typical model might try to answer from memory. Sometimes it is right, sometimes it is outdated, and sometimes it confidently makes things up.
+A typical model might try to answer from memory. Sometimes it is right, sometimes it is outdated, and sometimes it confidently invents details.
 
 A RAG system does something different. Instead of guessing first, it retrieves relevant information first and then answers using that context.
 
@@ -39,7 +39,7 @@ So the flow becomes:
 question -> retrieve relevant context -> generate answer
 ```
 
-That retrieval step is the heart of RAG, and that is what we are building.
+That retrieval step is the heart of RAG, and it is what we are building.
 
 Think of it like an open-book exam:
 
@@ -50,7 +50,7 @@ Think of it like an open-book exam:
 
 ## Step 1: Start with some knowledge
 
-We need something to search through:
+First, we need something to search:
 
 ```text
 React uses hooks
@@ -59,7 +59,7 @@ State updates UI
 React renders UI
 ```
 
-This tiny list is our entire knowledge base for now.
+For now, this tiny list is our entire knowledge base.
 
 In a real app, this might be:
 
@@ -80,9 +80,9 @@ vs
 "React uses hooks"
 ```
 
-A strict keyword match can fail even when two sentences mean almost the same thing.
+Strict keyword matching can fail even when two sentences mean almost the same thing.
 
-For example, "What does React use?" and "React uses hooks" share meaning, but they are not identical strings.
+For example, "What does React use?" and "React uses hooks" express the same idea, but they are not identical strings.
 
 So we convert text into numbers that capture meaning. These numeric representations are called embeddings.
 
@@ -102,7 +102,7 @@ Key idea:
 - similar meaning -> vectors point in similar directions
 - different meaning -> vectors point in different directions
 
-For this tutorial, we will use a fake embedding function so we can focus on mechanics, not model quality:
+In this tutorial, we use a fake embedding function so we can focus on mechanics, not model quality:
 
 ```ts
 function embed(text: string): number[] {
@@ -110,7 +110,7 @@ function embed(text: string): number[] {
 }
 ```
 
-Important note: this is not semantically meaningful like real embeddings. It is just a stand-in so we can build the retrieval pipeline end-to-end.
+Important note: unlike real embeddings, this is not semantically meaningful. It is only a stand-in so we can build the retrieval pipeline end to end.
 
 ---
 
@@ -127,7 +127,7 @@ const docs = [
 const embeddings = docs.map(embed);
 ```
 
-Now each document has a numeric version.
+Now each document has a numeric representation.
 
 You can think of this as a simple in-memory vector store:
 
@@ -142,7 +142,7 @@ You can think of this as a simple in-memory vector store:
 const queryVector = embed("What does React use?");
 ```
 
-Now query and documents live in the same vector space, so we can compare them mathematically.
+Now the query and documents live in the same vector space, so we can compare them mathematically.
 
 ---
 
@@ -154,7 +154,7 @@ Cosine similarity measures the angle between two vectors. Values are usually bet
 - $0$: unrelated direction
 - $-1$: opposite direction
 
-In retrieval, higher score means "more similar".
+In retrieval, a higher score means "more similar."
 
 ```ts
 function cosineSimilarity(a: number[], b: number[]) {
@@ -167,7 +167,7 @@ function cosineSimilarity(a: number[], b: number[]) {
 }
 ```
 
-If you want to be extra safe in real code, guard against divide-by-zero when a vector has zero magnitude.
+In production code, you should also guard against divide-by-zero when a vector has zero magnitude.
 
 ---
 
@@ -196,7 +196,7 @@ function retrieve(query: string) {
 What this function does:
 
 1. Embeds the query.
-2. Scores query vs each document.
+2. Scores the query against each document.
 3. Keeps the highest-scoring document.
 4. Returns that document as context.
 
@@ -212,11 +212,11 @@ Output:
 React uses hooks
 ```
 
-That is retrieval working.
+That is retrieval in action.
 
 ## Full minimal example (copy/paste)
 
-Here is the whole toy pipeline in one place:
+Here is the full toy pipeline in one place:
 
 ```ts
 const docs = [
@@ -276,7 +276,7 @@ React uses hooks
 
 ## Step 8: Use retrieved context
 
-In a real RAG app, retrieval is only half the pipeline.
+In a real RAG application, retrieval is only half the pipeline.
 
 You then build a prompt that includes:
 
@@ -290,7 +290,7 @@ For example:
 "What does React use? React uses hooks"
 ```
 
-This enriched prompt is what you send to the LLM.
+This enriched prompt is what you send to an LLM.
 
 The model is now grounded in your data, which reduces hallucination and improves factual accuracy.
 
@@ -313,7 +313,7 @@ That is the core of RAG.
 
 Meaning becomes distance.
 
-When embeddings are good, related concepts land close together in vector space. Retrieval then becomes a nearest-neighbor problem.
+When embeddings are good, related concepts end up close together in vector space. Retrieval then becomes a nearest-neighbor problem.
 
 In simple terms:
 
@@ -343,13 +343,13 @@ They also add practical engineering pieces:
 
 ## Common beginner mistakes
 
-If your RAG system feels weak, it is usually one of these:
+If your RAG system feels weak, it is usually because of one of these issues:
 
 1. Chunks are too large or too small.
 2. You retrieve only one chunk when you need top-k.
 3. Embeddings are poor for your domain.
 4. Prompt does not force the model to use provided context.
-5. No evaluation loop, so quality regressions go unnoticed.
+5. There is no evaluation loop, so quality regressions go unnoticed.
 
 Treat retrieval quality as a product feature, not a hidden implementation detail.
 
@@ -363,7 +363,7 @@ After understanding this toy version, upgrade one piece at a time:
 4. Build a prompt template that cites retrieved chunks.
 5. Add an automated eval set with expected answers.
 
-If you want a hands-on implementation, check out this repo:
+If you want a hands-on implementation, check out this repository:
 
 [learn-rag on GitHub](https://github.com/cmdsreedev/learn-rag)
 
