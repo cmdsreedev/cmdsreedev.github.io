@@ -1,5 +1,5 @@
 ---
-title: "Building a Tiny Transformer From Scratch (and Actually Understanding It)"
+title: "Building a Tiny Transformer From Scratch"
 description: "A practical walkthrough of building a tiny transformer in TypeScript and understanding each core block."
 pubDate: 2026-04-26
 pubDatetime: 2026-04-26T13:00:00.000Z

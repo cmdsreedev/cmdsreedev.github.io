@@ -1,5 +1,5 @@
 ---
-title: "Building a Simple RAG System From Scratch (and Actually Understanding It)"
+title: "Building a Simple RAG System From Scratch"
 description: "Build a minimal Retrieval-Augmented Generation pipeline from scratch and understand each core step."
 pubDate: 2026-04-26
 pubDatetime: 2026-04-26T12:00:00.000Z
