@@ -10,12 +10,14 @@ Your desk keyboard for your monitors. Your couch keyboard for your TV. **Display
 
 [Download for Windows x64](https://github.com/cmdsreedev/DisplayPilot/releases/latest) · [View source on GitHub](https://github.com/cmdsreedev/DisplayPilot)
 
+![DisplayPilot overview with sidebar navigation, automatic switching, and profile controls](/images/displaypilot/overview.png)
+
 ## One device, the right display
 
 Assign as many keyboards and mice as you need to any saved profile. Several devices can share a profile, and **Ignore** leaves other devices out of automatic switching.
 
-- **Dashboard:** see the current assumed profile, last input, and automatic-switch status. Switch profiles manually when you need to.
-- **Devices:** discover attached devices, give them friendly names, and choose their target profiles.
+- **Overview:** see the current assumed profile, last input, and automatic-switch status. Switch profiles manually when you need to.
+- **Devices:** search attached devices, give them friendly names, and choose their target profiles. Expand Device details only when you need identifiers.
 - **Profiles:** detect names from DisplayMagician's saved profiles or enter an exact name yourself.
 - **Settings:** choose the DisplayMagician installation folder, set a switching cooldown, and choose whether to start with Windows or minimize to the tray.
 - **Tray controls:** open DisplayPilot, pause automatic switching, switch to PC or TV, or exit.
@@ -45,3 +47,4 @@ HID devices can be detected and assigned in preparation for controller support. 
 Built with C#, .NET 10, Windows Forms, and Windows Raw Input. Version tags trigger automated regression checks, a self-contained Windows x64 build, and an Inno Setup installer. Each release includes a portable ZIP and SHA-256 checksums.
 
 [Build and release instructions](https://github.com/cmdsreedev/DisplayPilot/blob/main/RELEASING.md)
+
