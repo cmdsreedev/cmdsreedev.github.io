@@ -73,6 +73,49 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
     <Hr />
 
+    <section
+      id="projects"
+      class="pt-12 pb-8"
+      aria-labelledby="projects-heading"
+    >
+      <h2 id="projects-heading" class="text-2xl font-semibold tracking-wide">
+        Projects
+      </h2>
+      <article class="mt-5 rounded-lg border border-accent/30 p-6">
+        <p class="text-sm text-accent">Windows desktop utility</p>
+        <h3 class="mt-2 text-xl font-semibold">
+          <a
+            href="/projects/displaypilot/"
+            class="underline decoration-dashed underline-offset-4"
+            >DisplayPilot</a
+          >
+        </h3>
+        <p class="mt-3">
+          Switch from your desk monitors to your TV by using an assigned
+          keyboard or mouse. Map your input devices to DisplayMagician profiles,
+          with automatic switching and quick controls in the Windows tray.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+          <a
+            href="/projects/displaypilot/"
+            class="font-medium text-accent underline underline-offset-4"
+            >Explore DisplayPilot</a
+          >
+          <a
+            href="https://github.com/cmdsreedev/DisplayPilot/releases/latest"
+            class="text-accent underline underline-offset-4"
+            >Download for Windows</a
+          >
+        </div>
+      </article>
+      <div class="mt-5">
+        <LinkButton href="/projects/"
+          >All projects <IconArrowRight class="inline-block" /></LinkButton>
+      </div>
+    </section>
+
+    <Hr />
+
     {
       featuredPosts.length > 0 && (
         <>
